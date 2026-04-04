@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int tests = Integer.parseInt(br.readLine().trim());
+        StringBuilder sb = new StringBuilder();
+        
+        while (tests-- > 0) {
+            int n = Integer.parseInt(br.readLine().trim());
+            String s = br.readLine().trim();
+            
+            int maxRun = 1;
+            int currentRun = 1;
+            
+            for (int i = 1; i < n; i++) {
+                if (s.charAt(i) == s.charAt(i - 1)) {
+                    currentRun++;
+                    maxRun = Math.max(maxRun, currentRun);
+                } else {
+                    currentRun = 1;
+                }
+            }
+            sb.append(maxRun + 1).append("\n");
+        }
+        System.out.print(sb);
+    }
+}
